@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600000000000000,
+  "experience": 0.35,
+  "ingredient": "marshmellow:smore",
+  "result": {
+    "id": "minecraft:baked_potato"
+  }
+}

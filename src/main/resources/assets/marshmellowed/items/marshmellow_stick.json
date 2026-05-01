@@ -1,0 +1,44 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:damage",
+    "normalize": false,
+    "entries": [
+      {
+        "threshold": 0,
+        "model": {
+          "type": "minecraft:model",
+          "model": "marshmellowed:item/marshmellowed_stick_raw"
+        }
+      },
+      {
+        "threshold": 1,
+        "model": {
+          "type": "minecraft:model",
+          "model": "marshmellowed:item/marshmellowed_stick_slightly_cooked"
+        }
+      },
+      {
+        "threshold": 2,
+        "model": {
+          "type": "minecraft:model",
+          "model": "marshmellowed:item/marshmellowed_stick_perfectly_cooked"
+        }
+      },
+      {
+        "threshold": 3,
+        "model": {
+          "type": "minecraft:model",
+          "model": "marshmellowed:item/marshmellowed_stick_roasted"
+        }
+      },
+      {
+        "threshold": 4,
+        "model": {
+          "type": "minecraft:model",
+          "model": "marshmellowed:item/marshmellowed_stick_burnt"
+        }
+      }
+    ]
+  }
+}

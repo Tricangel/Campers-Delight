@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "marshmellowed:item/chocolate_coated_marshmellowed_stick_raw"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "filledlevel=0": {
+      "model": "marshmellowed:block/can_empty"
+    },
+    "filledlevel=0,filling=marshmallow": {
+      "model": "marshmellowed:block/can_empty"
+    },
+    "filledlevel=1,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_8"
+    },
+    "filledlevel=2,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_7"
+    },
+    "filledlevel=3,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_6"
+    },
+    "filledlevel=4,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_5"
+    },
+    "filledlevel=5,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_4"
+    },
+    "filledlevel=6,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_3"
+    },
+    "filledlevel=7,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_2"
+    },
+    "filledlevel=8,filling=marshmallow": {
+      "model": "marshmellowed:block/marshmellow_can/can_marshmellow_1"
+    },
+    "filledlevel=9,filling=marshmallow": {
+      "model": "marshmellowed:block/can_unopened"
+    },
+
+    "filledlevel=0,filling=chocolate": {
+      "model": "marshmellowed:block/can_empty"
+    },
+    "filledlevel=1,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_8"
+    },
+    "filledlevel=2,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_7"
+    },
+    "filledlevel=3,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_6"
+    },
+    "filledlevel=4,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_5"
+    },
+    "filledlevel=5,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_4"
+    },
+    "filledlevel=6,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_3"
+    },
+    "filledlevel=7,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_2"
+    },
+    "filledlevel=8,filling=chocolate": {
+      "model": "marshmellowed:block/chocolate_can/can_chocolate_1"
+    },
+    "filledlevel=9,filling=chocolate": {
+      "model": "marshmellowed:block/can_unopened"
+    }
+  }
+}
