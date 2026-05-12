@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    " yx",
+    "y  "
+  ],
+  "key": {
+    "x": "minecraft:iron_ingot",
+    "y": "minecraft:stick"
+  },
+  "result": "marshmellowed:tongs"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x",
+    "y",
+    "z"
+  ],
+  "key": {
+    "x": "marshmellowed:marshmellow",
+    "y": "marshmellowed:chocolate",
+    "z": "marshmellowed:graham_cracker"
+  },
+  "result": "marshmellowed:smore"
+}

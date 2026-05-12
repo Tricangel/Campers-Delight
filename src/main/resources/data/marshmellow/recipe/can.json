@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x x",
+    "xxx"
+  ],
+  "key": {
+    "x": "minecraft:iron_ingot"
+  },
+  "result": "marshmellowed:can"
+}

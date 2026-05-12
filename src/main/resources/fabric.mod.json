@@ -3,9 +3,9 @@
 	"id": "marshmellowed",
 	"version": "${version}",
 	"name": "Marshmellowed",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "All about marshmellows",
 	"authors": [
-		"Me!"
+		"Bee :3"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -22,6 +22,7 @@
 			"bee.mellow.MarshmellowedDataGenerator"
 		]
 	},
+	"accessWidener": "marshmellowed.classtweaker",
 	"mixins": [
 		"marshmellowed.mixins.json"
 	],

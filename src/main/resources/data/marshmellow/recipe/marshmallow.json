@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xy",
+    "yx"
+  ],
+  "key": {
+    "x": "minecraft:air",
+    "y": "minecraft:sugar"
+  },
+  "result": "marshmellowed:marshmellow"
+}

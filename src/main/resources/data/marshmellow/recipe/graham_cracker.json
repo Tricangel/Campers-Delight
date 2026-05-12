@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xy",
+    "yx"
+  ],
+  "key": {
+    "x": "minecraft:wheat",
+    "y": "minecraft:sugar"
+  },
+  "result": "marshmellowed:graham_cracker"
+} 
