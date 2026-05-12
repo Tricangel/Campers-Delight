@@ -2,6 +2,7 @@ package bee.mellow;
 
 import bee.mellow.registry.ModBlocks;
 import bee.mellow.registry.ModItemComponents;
+import bee.mellow.registry.ModItemPredicates;
 import bee.mellow.registry.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -21,5 +22,7 @@ public class Marshmellowed implements ModInitializer {
 		ModItems.init();
 		ModItemComponents.init();
 		ModBlocks.init();
+		ModItemPredicates.init();
+
 	}
 }

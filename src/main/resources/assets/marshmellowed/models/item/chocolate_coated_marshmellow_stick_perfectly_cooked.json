@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld_rod",
   "textures": {
-    "layer0": "marshmellowed:item/chocolate_coated_marshmellowed_perfectly_cooked"
+    "layer0": "marshmellowed:item/chocolate_coated_marshmellow_stick_perfectly_cooked"
   }
 }

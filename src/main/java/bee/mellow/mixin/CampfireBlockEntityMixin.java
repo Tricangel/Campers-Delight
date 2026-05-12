@@ -3,7 +3,9 @@ package bee.mellow.mixin;
 import bee.mellow.custom.CampfirePlaceable;
 import bee.mellow.registry.ModItemComponents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
@@ -28,12 +30,25 @@ public abstract class CampfireBlockEntityMixin {
 			if (!itemStack.isEmpty()) {
 				if (itemStack.getItem() instanceof CampfirePlaceable) {
 					int tick = entity.cookingProgress[i];
-					if (tick >= 10 && tick < 50 && (itemStack.get(ModItemComponents.COOKED_LEVEL) == null) || itemStack.get(ModItemComponents.COOKED_LEVEL) == 0) itemStack.set(ModItemComponents.COOKED_LEVEL, 1);
-					else if (tick >= 60 && tick < 80 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 1) itemStack.set(ModItemComponents.COOKED_LEVEL, 2);
-					else if (tick >= 80 && tick < 110 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 2) itemStack.set(ModItemComponents.COOKED_LEVEL, 3);
-					else if (tick >= 110 && tick < 200 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 3) itemStack.set(ModItemComponents.COOKED_LEVEL, 4);
-					else if (tick >= 200 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 4) itemStack = Items.STICK.getDefaultInstance();
-				entity.items.set(i, itemStack);
+					if (tick >= 30 && tick < 80 && (itemStack.get(ModItemComponents.COOKED_LEVEL) == null) || itemStack.get(ModItemComponents.COOKED_LEVEL) == 0) itemStack.set(ModItemComponents.COOKED_LEVEL, 1);
+					else if (tick >= 80 && tick < 110 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 1) itemStack.set(ModItemComponents.COOKED_LEVEL, 2);
+					else if (tick >= 110 && tick < 135 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 2) itemStack.set(ModItemComponents.COOKED_LEVEL, 3);
+					else if (tick >= 135 && tick < 200 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 3) itemStack.set(ModItemComponents.COOKED_LEVEL, 4);
+					else if (tick >= 200 && itemStack.get(ModItemComponents.COOKED_LEVEL) == 4) itemStack = Items.AIR.getDefaultInstance();
+					float saturation;
+					int nutrition;
+
+					int cookedTime = itemStack.getOrDefault(ModItemComponents.COOKED_LEVEL, 0);
+					if (cookedTime < 3) {
+						saturation = cookedTime + 2;
+						nutrition = cookedTime + 4;
+					} else {
+						saturation = 7 -cookedTime;
+						nutrition = 9 -cookedTime;
+					}
+					itemStack.set(DataComponents.FOOD, new FoodProperties(nutrition, saturation, true));
+
+					entity.items.set(i, itemStack);
 				level.sendBlockUpdated(pos, state, state, 3);
 				level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
 				entity.setChanged();

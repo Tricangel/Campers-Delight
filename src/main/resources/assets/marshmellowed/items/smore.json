@@ -1,44 +1,54 @@
 {
   "model": {
-    "type": "minecraft:range_dispatch",
-    "property": "minecraft:damage",
-    "normalize": false,
-    "entries": [
-      {
-        "threshold": 0,
-        "model": {
-          "type": "minecraft:model",
-          "model": "marshmellowed:item/smore_raw"
-        }
+    "type": "minecraft:condition",
+    "property": "minecraft:component",
+    "predicate": "marshmellowed:cooked_level",
+    "value": {
+      "level": 0
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "marshmellowed:item/smore_raw"
+    },
+    "on_false": {
+      "type": "minecraft:condition",
+      "property": "minecraft:component",
+      "predicate": "marshmellowed:cooked_level",
+      "value": {
+        "level": 1
       },
-      {
-        "threshold": 1,
-        "model": {
-          "type": "minecraft:model",
-          "model": "marshmellowed:item/smore_slightly_cooked"
-        }
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "marshmellowed:item/smore_slightly_cooked"
       },
-      {
-        "threshold": 2,
-        "model": {
+      "on_false": {
+        "type": "minecraft:condition",
+        "property": "minecraft:component",
+        "predicate": "marshmellowed:cooked_level",
+        "value": {
+          "level": 2
+        },
+        "on_true": {
           "type": "minecraft:model",
           "model": "marshmellowed:item/smore_perfectly_cooked"
-        }
-      },
-      {
-        "threshold": 3,
-        "model": {
-          "type": "minecraft:model",
-          "model": "marshmellowed:item/smore_roasted"
-        }
-      },
-      {
-        "threshold": 4,
-        "model": {
-          "type": "minecraft:model",
-          "model": "marshmellowed:item/smore_burnt"
+        },
+        "on_false": {
+          "type": "minecraft:condition",
+          "property": "minecraft:component",
+          "predicate": "marshmellowed:cooked_level",
+          "value": {
+            "level": 3
+          },
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "marshmellowed:item/smore_roasted"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "marshmellowed:item/smore_burnt"
+          }
         }
       }
-    ]
+    }
   }
 }

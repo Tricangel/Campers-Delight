@@ -14,5 +14,11 @@ public class ModItemComponents {
             Identifier.fromNamespaceAndPath(Marshmellowed.MOD_ID, "cooked_level"),
             DataComponentType.<Integer>builder().persistent(Codec.INT).build()
     );
+
+    public static final DataComponentType<Boolean> CAN_EAT = Registry.register(
+            BuiltInRegistries.DATA_COMPONENT_TYPE,
+            Identifier.fromNamespaceAndPath(Marshmellowed.MOD_ID, "can_eat"),
+            DataComponentType.<Boolean>builder().persistent(Codec.BOOL).build()
+    );
     public static void init() {}
 }
