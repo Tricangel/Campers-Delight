@@ -1,0 +1,105 @@
+package bee.camping.block;
+
+import bee.camping.registry.CamperDataComponents;
+import bee.camping.registry.CamperItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.List;
+
+public class CanBlock extends Block {
+    public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 9);
+    public static final EnumProperty<CanFilling> FILLING = EnumProperty.create("filling", CanFilling.class);
+    public CanBlock(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(LEVEL);
+        builder.add(FILLING);
+        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (level.isClientSide()) return InteractionResult.TRY_WITH_EMPTY_HAND;
+
+        ItemStack stack = player.getItemInHand(hand);
+        int contentsLevel = state.getValue(LEVEL);
+        if (contentsLevel == 0) {
+            for (CanFilling filling : CanFilling.values()) {
+                if (stack.is(filling.contents)) level.setBlockAndUpdate(pos, state.setValue(FILLING, filling).setValue(LEVEL, 9));
+            }
+            return InteractionResult.SUCCESS;
+        }
+
+        if (contentsLevel == 9) {
+            level.setBlockAndUpdate(pos, state.setValue(LEVEL, 8));
+            return InteractionResult.SUCCESS;
+        }
+
+        if (stack.getOrDefault(CamperDataComponents.COOK_TIME, 0) == 0) {
+            if (contentsLevel > 0) {
+                CanFilling filling = state.getValue(FILLING);
+                if (stack.is(filling.input)) player.setItemInHand(hand, filling.result);
+                level.setBlockAndUpdate(pos, state.setValue(LEVEL, contentsLevel - 1));
+            }
+            return InteractionResult.SUCCESS;
+
+        }
+
+
+        return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.create(0.25, 0, 0.25, 0.75, 0.625, 0.75);
+    }
+
+    @Override
+    protected boolean skipRendering(BlockState state, BlockState neighborState, Direction direction) {
+        return true;
+    }
+    
+    
+    public enum CanFilling implements StringRepresentable {
+        MARSHMALLOW("marshmallow", CamperItems.MARSHMALLOW, Items.STICK, CamperItems.MARSHMALLOW_STICK.getDefaultInstance()),
+        CHOCOLATE("chocolate", CamperItems.CHOCOLATE, CamperItems.MARSHMALLOW_STICK, CamperItems.CHOCOLATE_COATED_MARSHMALLOW_STICK.getDefaultInstance());
+
+        final String name;
+        final Item contents;
+        final Item input;
+        final ItemStack result;
+        CanFilling(String name, Item contents, Item input, ItemStack result) {
+            this.name = name;
+            this.input = input;
+            this.result = result;
+            this.contents = contents;
+        }
+        
+        @Override
+        public String getSerializedName() {
+            return name;
+        }
+    }
+}
