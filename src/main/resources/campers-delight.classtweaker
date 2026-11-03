@@ -1,0 +1,2 @@
+classTweaker  v2  named
+extend-enum  net/minecraft/client/model/HumanoidModel$ArmPose  CAMPERS_DELIGHT_CAMPFIRE_ROASTABLE

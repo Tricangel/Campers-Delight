@@ -106,8 +106,17 @@ public abstract class MinecraftMixin {
         int cookingTime = player.tickCount - player.getAttachedOrSet(CamperAttachments.COOKING_CAMPFIRE_ROASTABLE_TIME, 0);
         int cookingLevel = stack.getOrDefault(CamperDataComponents.COOK_TIME, 0);
         if (cookingLevel > 4) return;
-        System.out.println(cookingTime);
-        if (cookingTime % (30 - (cookingLevel * 3)) == 0) {
+
+        int timeToCook = switch (cookingLevel) {
+            case 0 -> 40;
+            case 1 -> 30;
+            case 2 -> 15;
+            case 3 -> 20;
+            case 4 -> 40;
+            default -> 20;
+        };
+
+        if (cookingTime > 10 && cookingTime % timeToCook == 0) {
 
             stack.set(CamperDataComponents.COOK_TIME, cookingLevel + 1);
             ClientPlayNetworking.send(new SetCookedLevelPacket(player.getStringUUID(), cookingLevel + 1));
@@ -125,6 +134,7 @@ public abstract class MinecraftMixin {
             }
         }
     }
+
 
 
 

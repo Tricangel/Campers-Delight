@@ -25,6 +25,7 @@
 	"mixins": [
 		"campers-delight.mixins.json"
 	],
+	"accessWidener": "campers-delight.classtweaker",
 	"depends": {
 		"fabricloader": ">=0.20.1",
 		"minecraft": "~1.21.11",

@@ -18,8 +18,8 @@ public class CamperItems {
     public static final Item MARSHMALLOW = register("marshmallow", Item::new, new Item.Properties().food(new FoodProperties(1, 2, false)));
     public static final Item CHOCOLATE = register("chocolate", Item::new, new Item.Properties().food(new FoodProperties(1, 2, false)));
 
-    public static final Item MARSHMALLOW_STICK = register("marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, p), new Item.Properties());
-    public static final Item CHOCOLATE_COATED_MARSHMALLOW_STICK = register("chocolate_coated_marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, p), new Item.Properties());
+    public static final Item MARSHMALLOW_STICK = register("marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, p), new Item.Properties().food(new FoodProperties(1, 2, true)));
+    public static final Item CHOCOLATE_COATED_MARSHMALLOW_STICK = register("chocolate_coated_marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, p), new Item.Properties().food(new FoodProperties(1, 2, true)));
 
 
     public static void init() {

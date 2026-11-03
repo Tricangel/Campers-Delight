@@ -3,7 +3,7 @@
   "package": "bee.camping.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin"
+    "AvatarRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,6 +12,9 @@
     "requireAnnotations": true
   },
   "client": [
+    "ArmPoseMixin",
+    "HumanoidModelMixin",
+    "ItemRendererMixin",
     "MinecraftMixin"
   ]
 }
