@@ -1,12 +1,18 @@
 {
   "item.campers-delight.smore": "Smore",
+  "item.campers-delight.bag_of_marshmallows": "Bag of Marshmallows",
   "item.campers-delight.chocolate_coated_marshmallow_stick": "Chocolate Coated Marshmallow on a Stick",
   "item.campers-delight.graham_cracker": "Graham Cracker",
-  "item.campers-delight.tongs": "Tongs",
   "item.campers-delight.chocolate": "Chocolate Bar",
   "item.campers-delight.marshmallow_stick": "Marshmallow on a Stick",
 
   "block.campers-delight.can": "Empty Can",
 
-  "itemgroup.campers-delight": "Campers Delight"
+  "itemgroup.campers-delight": "Campers Delight",
+
+  "cooked_level.campers-delight.raw": "Raw ",
+  "cooked_level.campers-delight.slightly_cooked": "Slightly Cooked ",
+  "cooked_level.campers-delight.perfectly_cooked": "Perfectly Cooked ",
+  "cooked_level.campers-delight.roasted": "Charred ",
+  "cooked_level.campers-delight.burnt": "Burnt "
 }

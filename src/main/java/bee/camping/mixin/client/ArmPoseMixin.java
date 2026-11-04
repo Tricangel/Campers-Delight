@@ -1,4 +1,4 @@
-package bee.camping.mixin;
+package bee.camping.mixin.client;
 
 import net.minecraft.client.model.HumanoidModel;
 import org.spongepowered.asm.mixin.Mixin;

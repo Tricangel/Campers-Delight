@@ -1,4 +1,4 @@
-package bee.camping.mixin;
+package bee.camping.mixin.client;
 
 import bee.camping.client.data.CampfireRoastableRenderState;
 import bee.camping.item.CampfireRoastableItem;

@@ -14,6 +14,6 @@ public record CookedLevelPredicate(int level) implements DataComponentPredicate 
 
     @Override
     public boolean matches(DataComponentGetter dataComponentGetter) {
-        return dataComponentGetter.getOrDefault(CamperDataComponents.COOK_TIME, 0) == level;
+        return dataComponentGetter.getOrDefault(CamperDataComponents.COOK_TIME, CookedLevel.RAW).ordinal() == level;
     }
 }

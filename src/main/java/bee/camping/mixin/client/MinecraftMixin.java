@@ -1,6 +1,7 @@
-package bee.camping.mixin;
+package bee.camping.mixin.client;
 
 import bee.camping.item.CampfireRoastableItem;
+import bee.camping.item.CookedLevel;
 import bee.camping.networking.SetCookedLevelPacket;
 import bee.camping.networking.SetRoastingPacket;
 import bee.camping.registry.CamperAttachments;
@@ -16,8 +17,10 @@ import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -98,28 +101,31 @@ public abstract class MinecraftMixin {
         ItemStack stack = player.getWeaponItem();
         BlockHitResult hitResult = (BlockHitResult) this.hitResult;
 
-        if (level == null || !(stack.getItem() instanceof CampfireRoastableItem) || !level.getBlockState(hitResult.getBlockPos()).is(BlockTags.CAMPFIRES)) {
+        if (level == null || !(stack.getItem() instanceof CampfireRoastableItem campfireRoastableItem) || !level.getBlockState(hitResult.getBlockPos()).is(BlockTags.CAMPFIRES)) {
             original.call(bl);
             return;
         }
 
         int cookingTime = player.tickCount - player.getAttachedOrSet(CamperAttachments.COOKING_CAMPFIRE_ROASTABLE_TIME, 0);
-        int cookingLevel = stack.getOrDefault(CamperDataComponents.COOK_TIME, 0);
-        if (cookingLevel > 4) return;
+        CookedLevel cookingLevel = stack.getOrDefault(CamperDataComponents.COOK_TIME, CookedLevel.RAW);
+        if (cookingLevel.ordinal() > 4) return;
 
         int timeToCook = switch (cookingLevel) {
-            case 0 -> 40;
-            case 1 -> 30;
-            case 2 -> 15;
-            case 3 -> 20;
-            case 4 -> 40;
-            default -> 20;
+            case RAW -> 40; //4 //0.5
+            case SLIGHTLY_COOKED -> 35; //5 //0.75
+            case PERFECTLY_COOKED -> 15; //5 //1
+            case ROASTED -> 20; //4 //0.5
+            case BURNT -> 40; //2 //0.15
+            default -> throw new IllegalStateException("Unexpected value: " + cookingLevel);
         };
 
         if (cookingTime > 10 && cookingTime % timeToCook == 0) {
+            CookedLevel newLevel = CookedLevel.values()[cookingLevel.ordinal() + 1];
 
-            stack.set(CamperDataComponents.COOK_TIME, cookingLevel + 1);
-            ClientPlayNetworking.send(new SetCookedLevelPacket(player.getStringUUID(), cookingLevel + 1));
+            stack.set(DataComponents.ITEM_NAME, newLevel.translation.copy().append(stack.getItem().getName()));
+            stack.set(CamperDataComponents.COOK_TIME, newLevel);
+            stack.set(DataComponents.FOOD, new FoodProperties(newLevel.nutrition, newLevel.saturation, true));
+            ClientPlayNetworking.send(new SetCookedLevelPacket(player.getStringUUID(), newLevel.ordinal()));
         }
     }
 
