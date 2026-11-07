@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "campers-delight:bag_of_marshmallows",
+    "#campers-delight:chocolate",
+    "campers-delight:graham_cracker"
+  ],
+  "result": {
+    "count": 1,
+    "id": "campers-delight:smore"
+  }
+}

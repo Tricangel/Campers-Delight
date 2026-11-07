@@ -19,6 +19,7 @@ import java.util.function.Function;
 public class CamperItems {
 
     public static final Item BAG_OF_MARSHMALLOWS = register("bag_of_marshmallows", Item::new, new Item.Properties().food(new FoodProperties(3, 0.75f, false)));
+    public static final Item GRAHAM_CRACKER = register("graham_cracker", Item::new, new Item.Properties().food(new FoodProperties(5, 0.25f, false)));
 
     public static final Item MARSHMALLOW_STICK = register("marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, p), new Item.Properties().stacksTo(1).usingConvertsTo(Items.STICK).food(new FoodProperties(4, 0.5f, true)));
     public static final Item CHOCOLATE_COATED_MARSHMALLOW_STICK = register("chocolate_coated_marshmallow_stick", p -> new CampfireRoastableItem(Items.STICK, 1, p), new Item.Properties().stacksTo(1).usingConvertsTo(Items.STICK).food(new FoodProperties(5, 0.5f, true)));

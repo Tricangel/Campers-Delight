@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:sweet_berries"
+  ],
+  "result": {
+    "count": 1,
+    "id": "campers-delight:bag_of_marshmallows"
+  }
+}

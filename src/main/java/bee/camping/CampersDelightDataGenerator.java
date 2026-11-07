@@ -1,5 +1,6 @@
 package bee.camping;
 
+import bee.camping.datagen.CamperRecipeGen;
 import bee.camping.datagen.ItemTagGen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -9,5 +10,6 @@ public class CampersDelightDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(ItemTagGen::new);
+		pack.addProvider(CamperRecipeGen::new);
 	}
 }

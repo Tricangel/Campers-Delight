@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CampfireBlockEntityMixin",
-    "CampfireBlockMixin",
-    "client.AvatarRendererMixin"
+    "CampfireBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -17,6 +16,7 @@
     "client.ArmPoseMixin",
     "client.HumanoidModelMixin",
     "client.ItemRendererMixin",
-    "client.MinecraftMixin"
+    "client.MinecraftMixin",
+    "client.AvatarRendererMixin"
   ]
 }

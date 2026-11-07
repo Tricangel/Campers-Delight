@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "r": "minecraft:red_dye"
+  },
+  "pattern": [
+    "i",
+    "r",
+    "i"
+  ],
+  "result": {
+    "count": 1,
+    "id": "campers-delight:can"
+  }
+}
