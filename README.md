@@ -1,9 +1,19 @@
-# Campers Delight
+## Campers Delight
+Adds items to huddle around a campfire with.
 
-## Setup
+### Metal Can and Marshmallow Sticks
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+This block can be filled with either chocolate, or marshmallows!
+When filled with marshmallows and interacted with using a stick, you get a marshmallow on a stick :D
+When filled with chocolate and interacted with using a marshmallow on a stick, you get a chocolate coated marshmallow on a stick.
 
-## License
+These sticks can be cooked by holding left click on a campfire, but be careful not to burn them!
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+### Smores
+
+Can be placed onto a campfire to cook, use an axe to take the smores off of the campfire at the right time to get a perfect roast :D
+
+[insert picture of roasting marshmallow at sunset]
+
+Have a cool feature idea or want this mod updated? 
+[Join the Discord!](https://discord.gg/YCm5DBF8dx)
